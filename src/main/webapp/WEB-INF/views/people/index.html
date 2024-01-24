@@ -5,10 +5,13 @@
     <title>All persons</title>
 </head>
 <body>
-
+<p th:text="${locale}">VALUE</p>
+<hr>
 <div th:each="person : ${people}">
     <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a>
 </div>
+<hr>
+<a href="/people/new"> add new Person</a>
 <hr>
 <a href="index.jsp"> return</a>
 </body>

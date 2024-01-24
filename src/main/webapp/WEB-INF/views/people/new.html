@@ -5,13 +5,18 @@
     <title>New person</title>
 </head>
 <body>
-
+<br>
+<br>
 <form th:method="POST" th:action="@{/people}" th:object="${person}">
     <label for="name">Enter your name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <br/>
+    <br>
     <input type="submit" value="Add Person!"/>
-</form>
 
+</form>
+<br>
+<hr>
+<a href="/people"> return</a>
 </body>
 </html>

@@ -1,10 +1,11 @@
-<html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <body>
 <h2>Welcome to my test MVC webapp</h2>
 Please proceed to <a href="people"> People's list</a>
 <hr>
 <br>
-or choose:
+or choose default Persons:
+<br>
 <br>
 <a href="people/1"> Person #1</a>
 <br>

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.lukyanov.dao.PersonDAO;
 import ru.lukyanov.model.Person;
 
+import java.util.Locale;
+
 
 @Controller
 @RequestMapping("/people")
@@ -41,5 +43,10 @@ public class PeopleController {
     public String create(@ModelAttribute("person") Person person) {
         personDAO.save(person);
         return "redirect:/people";
+    }
+
+    @ModelAttribute("locale")
+    public String getLocale(Locale locale) {
+        return "Dear User, your Locale is: " + locale.getCountry();
     }
 }
