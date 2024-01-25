@@ -33,9 +33,8 @@ public class PeopleController {
         return "people/show";
     }
 
-    @GetMapping("/new")
-    public String newPerson(Model model) {
-        model.addAttribute("person", new Person());
+    @GetMapping(value = "/new")
+    public String newPerson(@ModelAttribute("person") Person person) {
         return "people/new";
     }
 
@@ -48,5 +47,23 @@ public class PeopleController {
     @ModelAttribute("locale")
     public String getLocale(Locale locale) {
         return "Dear User, your Locale is: " + locale.getCountry();
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") int id) {
+        model.addAttribute("person", personDAO.show(id));
+        return "people/edit";
+    }
+
+    @PatchMapping("/{id}")
+    public String updatePerson(@ModelAttribute Person person, @PathVariable("id") int id) {
+        personDAO.update(id, person);
+        return "redirect:/people";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletePerson(@PathVariable("id") int id) {
+        personDAO.delete(id);
+        return "redirect:/people";
     }
 }
