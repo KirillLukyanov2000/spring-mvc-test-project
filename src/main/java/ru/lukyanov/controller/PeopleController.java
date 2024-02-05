@@ -1,9 +1,12 @@
 package ru.lukyanov.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.lukyanov.dao.PersonDAO;
 import ru.lukyanov.model.Person;
 
@@ -22,9 +25,10 @@ public class PeopleController {
     }
 
     @GetMapping()
-    public String index(Model model) {
-        model.addAttribute("people", personDAO.index());
-        return "people/index";
+    public ModelAndView index(ModelAndView modelAndView) {
+        modelAndView.addObject("people", personDAO.index());
+        modelAndView.setViewName("people/index");
+        return modelAndView;
     }
 
     @GetMapping("/{id}")
@@ -39,7 +43,10 @@ public class PeopleController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute("person") Person person) {
+    public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "people/new";
+        }
         personDAO.save(person);
         return "redirect:/people";
     }
@@ -56,7 +63,10 @@ public class PeopleController {
     }
 
     @PatchMapping("/{id}")
-    public String updatePerson(@ModelAttribute Person person, @PathVariable("id") int id) {
+    public String updatePerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult, @PathVariable("id") int id) {
+        if (bindingResult.hasErrors()) {
+            return "people/edit";
+        }
         personDAO.update(id, person);
         return "redirect:/people";
     }
