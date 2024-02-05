@@ -10,12 +10,12 @@
 <p th:text="'E-MAIL: ' + ${person.getEmail()}">VALUE</p>
 <p th:text="'ID: ' + ${person.getId()}">VALUE</p>
 <hr>
-<a th:href="@{/people/{id}/edit(id=${person.getId()})}"> edit Person</a>
+<a style="color:red" th:href="@{/people/{id}/edit(id=${person.getId()})}"> edit Person</a>
 <hr>
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
     <input type="submit" value="delete Person"/>
 </form>
 <hr>
-<a href="/people"> return</a>
+<a style="color:blue" href="/people"> return</a>
 </body>
 </html>

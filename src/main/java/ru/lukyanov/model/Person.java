@@ -1,7 +1,7 @@
 package ru.lukyanov.model;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+
+import javax.validation.constraints.*;
 
 public class Person {
     private int id;

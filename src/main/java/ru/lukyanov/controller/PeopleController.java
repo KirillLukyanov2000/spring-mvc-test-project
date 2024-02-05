@@ -1,6 +1,6 @@
 package ru.lukyanov.controller;
 
-import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.lukyanov.dao.PersonDAO;
 import ru.lukyanov.model.Person;
 
+import javax.validation.Valid;
 import java.util.Locale;
 
 
