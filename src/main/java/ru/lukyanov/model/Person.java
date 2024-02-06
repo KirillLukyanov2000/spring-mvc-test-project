@@ -1,6 +1,5 @@
 package ru.lukyanov.model;
 
-
 import javax.validation.constraints.*;
 
 public class Person {
